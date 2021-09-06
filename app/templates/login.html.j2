@@ -1,0 +1,24 @@
+{% extends 'base.html.j2' %}
+    {% block css %}
+{# insert css style sheet if you want #}
+    {% endblock %}
+{% block content %}
+    <h1>Login</h1>
+    <small style="color:red">{{ error }}</small>
+
+    <form action="{{ url_for('login') }}" method="POST">
+        {{ form.hidden_tag() }}
+        {# email section #}
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control") }}
+
+        {# password section #}
+        {{ form.password.label(class="form-label") }}
+        {{ form.password(class="form-control") }}
+
+        {# submit section #}
+        {{ form.submit(class="btn btn-primary") }}
+
+    </form>
+
+{% endblock %}

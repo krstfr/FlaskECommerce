@@ -1,0 +1,36 @@
+{% extends 'base.html.j2' %}
+ <link rel="stylesheet" href="{{url_for('static',filename='product.css')}}">
+{% block content %}
+
+    <h1>Product</h1>
+    <h4>What you looking for?</h4><br>
+
+    <br>
+    {% if error %}
+        <small style="color:red;">{{ error }}</small>
+    {% else %}
+        <small> No Error. Everything's alright </small>
+    {% endif %}
+    {% if products %}
+       <div class="card" div style="text-align:center" style="width: 18rem;">
+       {% for product in products %}
+            <img src="{{ product.image_url }}" id="product" style="width:500px;height:600px; align:center" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <h6>{{product['price']}}</h6>
+                <p class="card-text">{{product['description']}}</p>
+                <h6>{{product['category']}}</h6>
+   
+            </div>
+            <form action="{{url_for('view_cart')}}" method="post">
+                <input type="hidden" name="product_id" value="{{product.id}}">
+                <button type="submit" class="btn btn-sm btn-warning"> Add to Cart</button>
+                <label for=""> Quantity:</label>
+                <input type="number" name="quantity" value="1" min="1" max="3"><hr>
+      
+        {% endfor %}
+        </div>
+
+    {% endif %}
+
+{% endblock %}

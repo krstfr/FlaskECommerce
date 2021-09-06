@@ -1,0 +1,17 @@
+:root{
+    --dark:#6E8898;
+    --med:#9FB1BC;
+    --light:#D3D0CB;
+}
+
+img{
+    width: 200px;
+    height: 200px;
+}
+
+#main{
+    background-color: var(--dark);
+}
+.container{
+    margin: 50px 30px 30px 50px ;
+}
